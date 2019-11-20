@@ -1,0 +1,27 @@
+<%- include('../../includes/header.ejs'); %>
+<%- include('../../includes/navigation.ejs'); %>
+
+<h2>Sign-up</h2>
+
+<% if(errors.length >0) {
+    errors.map( error => {
+    %>
+<strong><%= error.msg %></strong> <br>
+
+<% })
+} %>
+<form action="/sign-up" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+    <div class="form-group jumbotron">
+        <label for="email">Email</label>
+        <input type="email" name="email" class="form-control">
+    </div>
+    <div class="form-group jumbotron">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success">Sign-up</button>
+
+</form>
+
+<%- include('../../includes/footer.ejs') %>
